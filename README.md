@@ -1,2 +1,2 @@
-# github-webhook-firebase-function
-An authenticated firebase function as a webhook 
+# github-webhook-gcp-function
+An authenticated gcp function as a webhook 
