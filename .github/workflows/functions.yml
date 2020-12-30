@@ -1,0 +1,21 @@
+name: Deploy the application to Google Cloud Run
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  deploy:
+    name: Deploy function to gcp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+
+      - name: Authenticate into Google Cloud Platform
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_email: ${{ secrets.GCLOUD_EMAIL }}
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Deploy Function
+        run: gcloud functions deploy webhook_test --runtime python38 --trigger-http --max-instances 1 --memory 128MB --timeout 5s
