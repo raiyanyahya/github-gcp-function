@@ -18,4 +18,4 @@ jobs:
           service_account_email: ${{ secrets.GCLOUD_EMAIL }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Deploy Function
-        run: gcloud functions deploy webhook_test --runtime python38 --trigger-http --max-instances 1 --memory 128MB --timeout 5s
+        run: gcloud functions deploy webhook_test --project buildpipe-test --runtime python38 --trigger-http --max-instances 1 --memory 128MB --timeout 5s
